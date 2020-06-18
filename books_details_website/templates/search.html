@@ -1,0 +1,31 @@
+{% extends "layout.html"%}
+
+{%block body %}
+
+<h2>DETAILS:</h2>
+<h6>
+<b>Title :-</b>         {{book.title}}<br>	
+<b> ISBN CODE:-</b>     {{book.isbn}} <br>
+<b>Author :-</b>        {{book.author}}	<br>
+<b>Year_of_publish:-</b>{{book.year}}<br>
+</h6>	
+<br>
+
+<form action="{{url_for('comment' ,user_id = user.id,book_id=book.id)}} "method="post" style="border:1px solid #ccc">
+        <div>     
+<input type="text" placeholder="Add your comment" name="comment" required>
+
+    <button style="color:blue"> Comment </button>
+</div>
+</form>
+
+<div>
+<h2>Reviews:</h2>
+{% for r in reviews%}
+{{r.user_id}} : {{r.comment}} <br>
+{% else %}
+<p>No reviews available  </p>
+{% endfor %}
+</div>
+
+{% endblock %}

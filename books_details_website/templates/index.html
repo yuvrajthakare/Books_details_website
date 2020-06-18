@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+	{% block body%}
+	<p>	Hello {{user.uname}} ! </p>
+	<div>
+	<form action="{{url_for('search', user_id = user.id)}}" method="post">
+	<b>Search For book title </b>
+	<input class="form-control" name="name" placeholder="Enter book's name">		
+		<b> Select From Books </b>
+	<select class="form-control" placeholder="Search.." name="book_id" >
+			{% for book in books %}
+			<option value="{{ book.id}}">{{book.title}}	</option>
+			{% endfor %}
+	</select>
+			<button class="btn btn-primary">Searh</button>
+	</form>
+
+	
+		
+	{% endblock%}
+	
+
+
+</html>
